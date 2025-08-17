@@ -5,9 +5,21 @@
       "src": "vite.config.ts",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist",
-        "nodeVersion": "16.x"
+        "distDir": "dist"
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "status": 200
     }
   ]
 }
